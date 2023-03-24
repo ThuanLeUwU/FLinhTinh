@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">F Linh Tinh</string>
+    <string name="product_type_1">Acer</string>
+    <string name="product_type_2">Asus</string>
+    <string name="product_type_3">Dell</string>
+    <!--    <string name="product_type_4">Máy giặt</string>-->
+    <!--    <string name="product_type_5">Gia dụng</string>-->
+    <!--    <string name="product_type_6">Tủ lạnh</string>-->
+    <!--    <string name="product_type_7">Tivi</string>-->
+    <string name="more">Xem thêm</string>
+    <string name="title_activity_order_detail">OrderDetailActivity</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="next">Tiếp tục</string>
+    <string name="previous">Quay lại</string>
+    <string name="login">Login</string>
+    <string name="home">Trang chủ</string>
+    <string name="make_order">Đặt hàng</string>
+    <string name="buy">Mua</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="product_list">Danh sách sản phẩm</string>
+    <string name="customer_information">Thông tin khách hàng</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="order_history">Lịch sử mua hàng</string>
+</resources>

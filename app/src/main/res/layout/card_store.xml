@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:elevation="5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_single_item">
+
+            <TextView
+                android:id="@+id/store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="name"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/store_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/store_name"
+                android:layout_margin="5dp"
+                android:text="phone"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/store_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/store_phone"
+                android:layout_margin="5dp"
+                android:text="email"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/store_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/store_email"
+                android:layout_margin="5dp"
+                android:text="address"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/store_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/store_address"
+                android:layout_margin="5dp"
+                android:text="city"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/store_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/store_city"
+                android:layout_margin="5dp"
+                android:text="status"
+                android:textSize="18sp" />
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
