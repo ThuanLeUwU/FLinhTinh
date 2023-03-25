@@ -20,6 +20,7 @@ import com.project.flinhtinh.model.Product;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import retrofit2.Call;
@@ -53,13 +54,13 @@ public class ProductDetailActivity extends AppCompatActivity {
         callApiGetCart(userId);
 
         btnAddToCart.setOnClickListener(v -> {
-            //Get current User ID
+            //Get current Product ID
             int quantity = Integer.parseInt((String) productQuantity.getText());
             double price = Double.parseDouble((String) productPrice.getText());
 
             if (!cart.getCart().containsKey(product.getProductId())) {
                 cart.addItem(product.getProductId(), new OrderDetail("string", null, product, quantity, price, "ACTIVE"));
-                Log.d("TEST", "Don't have the item");
+                Log.d("TEST", "Empty!!");
             } else {
                 cart.editItem(product.getProductId(), quantity);
                 Log.d("TEST", "Have the item");
@@ -89,6 +90,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         callApiProductDetail();
 
+        callApiProductDetailByName();
     }
 
     private void callApiProductDetail() {
@@ -105,12 +107,10 @@ public class ProductDetailActivity extends AppCompatActivity {
                     productDescription.setText(getProduct.getDescription());
                     productPrice.setText(String.valueOf(getProduct.getPrice()));
                 }
-                Toast.makeText(ProductDetailActivity.this, "GET API SUCCESS", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Product> call, Throwable t) {
-                Toast.makeText(ProductDetailActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -132,7 +132,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Cart> call, Throwable t) {
-                Toast.makeText(ProductDetailActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ProductDetailActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -156,16 +156,37 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onResponse(Call<Cart> call, Response<Cart> response) {
                 if (response.isSuccessful()) {
                     Log.d("TEST", "UPDATE");
-                    Toast.makeText(ProductDetailActivity.this, "UPDATE SUCCESS", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Cart> call, Throwable t) {
                 Log.d("TEST", "CANT UPDATE");
-                Toast.makeText(ProductDetailActivity.this, "CANT UPDATE", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void callApiProductDetailByName() {
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("PRODUCT_NAME");
+        ProductApi.PRODUCT_API.getProductDetailByName(name).enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                List<Product> getProduct = response.body();
+
+                if (getProduct != null && getProduct.size() == 1) {
+                    Picasso.get().load(getProduct.get(0).getImage()).into(productImg);
+                    productName.setText(getProduct.get(0).getName());
+                    productDescription.setText(getProduct.get(0).getDescription());
+                    productPrice.setText(String.valueOf(getProduct.get(0).getPrice()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+            }
+        });
+
     }
 
 }

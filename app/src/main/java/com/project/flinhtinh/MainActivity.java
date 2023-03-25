@@ -16,8 +16,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +34,7 @@ import com.project.flinhtinh.activity.OrderHistoryActivity;
 import com.project.flinhtinh.activity.ProductDetailActivity;
 import com.project.flinhtinh.apdater.CategoryAdapter;
 import com.project.flinhtinh.apdater.MainAdapter;
+import com.project.flinhtinh.apdater.SearchAdapter;
 import com.project.flinhtinh.apdater.SliderAdapter;
 import com.project.flinhtinh.api.CategoryApi;
 import com.project.flinhtinh.api.ProductApi;
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
     private CategoryAdapter categoryAdapter;
     private TextView textHistory;
     private ImageView imgCart, menu;
-    private SearchView searchView;
+    private AutoCompleteTextView searchView;
     private List<Product> listProducts;
     private List<Category> listCates;
 
@@ -76,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
         Intent intent = getIntent();
         String userId = intent.getStringExtra("USER_ID");
         if(userId == null){
-//            this.userId = UUID.randomUUID().toString();
             this.userId = "111";
         }
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
@@ -86,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
 
         sliderView = findViewById(R.id.image_slider);
 
+        searchView = findViewById(R.id.search_view);
+
         SliderAdapter sliderAdapter = new SliderAdapter(images);
 
         sliderView.setSliderAdapter(sliderAdapter);
@@ -93,10 +99,6 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
         sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
         sliderView.startAutoCycle();
 
-//        textHistory = findViewById(R.id.text_history);
-//        imgCart = findViewById(R.id.shopping_cart);
-//        menu = findViewById(R.id.menu);
-//        searchView = findViewById(R.id.search_view);
         drawerLayout = findViewById(R.id.drawer_layout_home);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -132,47 +134,15 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
         rcvProduct = findViewById(R.id.rcv_product);
         rcvCategory = findViewById(R.id.rcv_category);
 
-//        textHistory.setOnClickListener(v -> {
-//            Intent historyInput = new Intent(this, HistoryInputActivity.class);
-//            startActivity(historyInput);
-//        });
-//
-//        imgCart.setOnClickListener(v -> {
-//            Intent cart = new Intent(this, CartActivity.class);
-//            startActivity(cart);
-//        });
-//
-//        menu.setOnClickListener(v -> {
-//            Intent login = new Intent(this, LoginActivity.class);
-//            startActivity(login);
-//        });
-
-
 
         callApiProduct();
+
+        setProductAdapter();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_nav, menu);
-        MenuItem searchItem = menu.findItem(R.id.search_view);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                Intent intent = new Intent(MainActivity.this, ProductDetailActivity.class);
-                intent.putExtra("query", query);
-                startActivity(intent);
-                finish();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Xử lý khi thay đổi nội dung search query
-                return false;
-            }
-        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -237,7 +207,6 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
             }
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
             }
         });
         //Call api Category
@@ -254,7 +223,6 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
             }
             @Override
             public void onFailure(Call<List<Category>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -281,7 +249,38 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
             }
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void setProductAdapter(){
+        ProductApi.PRODUCT_API.getListProduct(2023).enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (response.isSuccessful()) {
+                    List<Product> productList = response.body();
+
+
+                    SearchAdapter productSearchAdapter = new SearchAdapter(MainActivity.this, R.layout.item_search, productList);
+                    searchView.setAdapter(productSearchAdapter);
+
+
+                    searchView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent detail = new Intent(MainActivity.this, ProductDetailActivity.class);
+                            detail.putExtra("PRODUCT_NAME", listProducts.get(position).getName());
+                            startActivity(detail);
+                        }
+                    });
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.d("MYTAG", "onFailure: " + t.getMessage());
             }
         });
     }

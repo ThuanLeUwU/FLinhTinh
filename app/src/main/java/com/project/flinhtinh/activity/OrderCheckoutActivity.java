@@ -47,8 +47,7 @@ public class OrderCheckoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
-//        textHistory = findViewById(R.id.text_history);
-//        imgCart = findViewById(R.id.shopping_cart);
+
         recyclerView = findViewById(R.id.rcv_product);
         fullName = findViewById(R.id.tv_full_name);
         phone = findViewById(R.id.tv_phone);
@@ -58,14 +57,6 @@ public class OrderCheckoutActivity extends AppCompatActivity {
         totalPrice = findViewById(R.id.tv_total_price);
         btnBack = findViewById(R.id.btn_back);
         btnOrder = findViewById(R.id.btn_order);
-//        menu = findViewById(R.id.menu);
-//        searchView = findViewById(R.id.search_view);
-
-//        textHistory.setOnClickListener(v -> {
-//            Intent historyInput = new Intent(this, HistoryInputActivity.class);
-//            startActivity(historyInput);
-//        });
-
 
 
 
@@ -83,7 +74,7 @@ public class OrderCheckoutActivity extends AppCompatActivity {
                         form.getFullName(),
                         form.getPhone(),
                         form.getEmail(),
-                        "stress",
+                        "street",
                         form.getAddress(),
                         form.getCity(),
                         "Active");
@@ -150,7 +141,7 @@ public class OrderCheckoutActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<Cart> call, Throwable t) {
-                Toast.makeText(OrderCheckoutActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -194,12 +185,12 @@ public class OrderCheckoutActivity extends AppCompatActivity {
         OrderApi.ORDER_API.createOrder(order).enqueue(new Callback<Order>() {
             @Override
             public void onResponse(Call<Order> call, Response<Order> response) {
-                Log.d("CART", "CREATE ORDER SUCCESS");
+                Log.d("CART", "CREATE SUCCESS");
             }
 
             @Override
             public void onFailure(Call<Order> call, Throwable t) {
-                Log.d("CART", "CREATE ORDER FAILED");
+                Log.d("CART", "CREATE FAILED");
             }
         });
     }
@@ -208,11 +199,11 @@ public class OrderCheckoutActivity extends AppCompatActivity {
         OrderApi.ORDER_API.createOrderDetail(orderDetail).enqueue(new Callback<OrderDetail>() {
             @Override
             public void onResponse(Call<OrderDetail> call, Response<OrderDetail> response) {
-                Log.d("CART", "CREATE DETAIL SUCCESS");
+                Log.d("CART", "CREATE SUCCESS");
             }
             @Override
             public void onFailure(Call<OrderDetail> call, Throwable t) {
-                Log.d("CART", "FAILED TO CREATE");
+                Log.d("CART", "FAILED CREATE");
             }
         });
     }
@@ -226,7 +217,7 @@ public class OrderCheckoutActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Cart> call, Throwable t) {
-                Log.d("CART", "FAILED TO DELETE");
+                Log.d("CART", "FAILED DELETE");
             }
         });
     }

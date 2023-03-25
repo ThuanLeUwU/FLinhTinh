@@ -27,6 +27,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".activity.StoreDetail"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.OrderCheckoutActivity"
             android:exported="false">
             <meta-data
@@ -40,13 +47,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".activity.OtpActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".activity.CartActivity"
             android:exported="false">
@@ -91,6 +92,13 @@
         </activity>
         <activity
             android:name=".activity.CustomerViewActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activity.CustomerDetail"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

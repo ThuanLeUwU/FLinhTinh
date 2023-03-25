@@ -1,9 +1,10 @@
 package com.project.flinhtinh.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Store {
-    private UUID storeId;
+public class Store implements Serializable {
+    private String storeId;
     private String name;
     private String phone;
     private String email;
@@ -11,7 +12,7 @@ public class Store {
     private String address;
     private String status;
 
-    public Store(UUID storeId, String name, String phone, String email, String city, String address, String status) {
+    public Store(String storeId, String name, String phone, String email, String city, String address, String status) {
         this.storeId = storeId;
         this.name = name;
         this.phone = phone;
@@ -21,11 +22,11 @@ public class Store {
         this.status = status;
     }
 
-    public UUID getStoreId() {
+    public String getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(UUID storeId) {
+    public void setStoreId(String storeId) {
         this.storeId = storeId;
     }
 

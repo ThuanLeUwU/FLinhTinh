@@ -13,9 +13,9 @@ public class StoreViewHolder extends RecyclerView.ViewHolder {
     public StoreViewHolder(@NonNull View itemView) {
         super(itemView);
         storeName = itemView.findViewById(R.id.store_name);
-        storeEmail = itemView.findViewById(R.id.store_email);
+//        storeEmail = itemView.findViewById(R.id.store_email);
         storePhone = itemView.findViewById(R.id.store_phone);
-        storeAddress = itemView.findViewById(R.id.store_address);
+//        storeAddress = itemView.findViewById(R.id.store_address);
         storeCity = itemView.findViewById(R.id.store_city);
         storeStatus = itemView.findViewById(R.id.store_status);
     }

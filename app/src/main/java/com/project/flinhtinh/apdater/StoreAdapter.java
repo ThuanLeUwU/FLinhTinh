@@ -1,13 +1,16 @@
 package com.project.flinhtinh.apdater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.flinhtinh.R;
+import com.project.flinhtinh.activity.StoreDetail;
 import com.project.flinhtinh.model.Store;
 import com.project.flinhtinh.viewholder.StoreViewHolder;
 
@@ -36,10 +39,20 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreViewHolder> {
         }
         holder.storeName.setText(store.getName());
         holder.storePhone.setText("Sđt: " + store.getPhone());
-        holder.storeEmail.setText("Email: " + store.getEmail());
+//        holder.storeEmail.setText("Email: " + store.getEmail());
         holder.storeCity.setText("Thành phố: " + store.getCity());
-        holder.storeAddress.setText("Địa chỉ: " + store.getAddress());
+//        holder.storeAddress.setText("Địa chỉ: " + store.getAddress());
         holder.storeStatus.setText("Trạng thái: " + store.getStatus());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // chuyển đến trang chi tiết
+                Intent intent = new Intent(context, StoreDetail.class);
+                intent.putExtra("store", store);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

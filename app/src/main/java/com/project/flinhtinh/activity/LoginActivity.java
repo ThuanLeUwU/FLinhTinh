@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         loginUserName = findViewById(R.id.username);
         loginPassword = findViewById(R.id.password);
 
-        //Go to Home page after login
+        //Back home
         btnLogin.setOnClickListener(view -> {
             String userName = loginUserName.getText().toString();
             String password = loginPassword.getText().toString();
@@ -58,13 +58,13 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(i);
                     }
                 } else {
-                    Toast.makeText(LoginActivity.this, "WRONG EMAIL OR PASSWORD", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void onFailure(Call<Account[]> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "GET API FAILED", Toast.LENGTH_LONG).show();
+
             }
         });
     }

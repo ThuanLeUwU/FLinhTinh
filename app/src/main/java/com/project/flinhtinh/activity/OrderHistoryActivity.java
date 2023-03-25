@@ -100,25 +100,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_nav, menu);
-//        MenuItem searchItem = menu.findItem(R.id.search);
-//        SearchView searchView = (SearchView) searchItem.getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                Intent intent = new Intent(OrderHistoryActivity.this, ProductDetailActivity.class);
-//                intent.putExtra("query", query);
-//                startActivity(intent);
-//                finish();
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                // Xử lý khi thay đổi nội dung search query
-//                return false;
-//            }
-//        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -177,7 +158,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
                 List<OrderDetail> listOrderHistory = response.body();
                 if(listOrderHistory != null){
                     if(!listOrderHistory.isEmpty()){
-                        Toast.makeText(OrderHistoryActivity.this, "GET API SUCCESS", Toast.LENGTH_SHORT).show();
                         OrderHistoryAdapter orderHistoryAdapter = new OrderHistoryAdapter(listOrderHistory);
                         rcvOrderHistory.setLayoutManager(new GridLayoutManager(OrderHistoryActivity.this, 1));
                         rcvOrderHistory.setAdapter(orderHistoryAdapter);
@@ -186,7 +166,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<List<OrderDetail>> call, Throwable t) {
-                Toast.makeText(OrderHistoryActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
             }
         });
     }

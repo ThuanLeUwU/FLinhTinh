@@ -28,4 +28,8 @@ public interface ProductApi {
 
     @GET("api/v1/category/{id}/product")
     Call<List<Product>> getListProductWithCate(@Path("id") UUID categoryId);
+
+    @GET("api/v1/products")
+    Call<List<Product>> getProductDetailByName(@Query("name") String name);
+
 }

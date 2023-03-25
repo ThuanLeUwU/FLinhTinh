@@ -53,52 +53,20 @@ public class CustomerViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer);
 
-//        textStore = findViewById(R.id.text_store);
-//        textStaff = findViewById(R.id.text_staff);
-//        iconStore = findViewById(R.id.icon_store);
-//        iconStaff = findViewById(R.id.icon_staff);
+
         rcvCustomer = findViewById(R.id.rcv_customer);
-//        menu = findViewById(R.id.menu);
-//        searchView = findViewById(R.id.search_view);
+
 
         View.OnClickListener onClickStore = v -> {
             Intent storeView = new Intent(this, StoreActivity.class);
             startActivity(storeView);
             finish();
         };
-//        textStore.setOnClickListener(onClickStore);
-//        iconStore.setOnClickListener(onClickStore);
 
         drawerLayout = findViewById(R.id.drawer_layout_customer);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//        navigationView = findViewById(R.id.nav);
-//        navigationView.bringToFront();
-//        navigationView.setNavigationItemSelectedListener(item -> {
-//            switch (item.getItemId()) {
-//                case R.id.home: {
-//                    drawerLayout.close();
-//                    startActivity(new Intent(CustomerViewActivity.this, MainActivity.class));
-//                    return true;
-//                }
-//
-//                case R.id.login: {
-//                    drawerLayout.close();
-//                    startActivity(new Intent(CustomerViewActivity.this, LoginActivity.class));
-//                    return true;
-//                }
-//                case R.id.order_history: {
-//                    drawerLayout.close();
-//                    startActivity(new Intent(CustomerViewActivity.this, OrderHistoryActivity.class));
-//                    return true;
-//                }
-//            }
-//            return true;
-//        });
 
 
         callApiGetListCustomer();
@@ -107,24 +75,6 @@ public class CustomerViewActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_admin, menu);
-//        MenuItem searchItem = menu.findItem(R.id.icon_person);
-//        SearchView searchView = (SearchView) searchItem.getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                Intent intent = new Intent(CustomerViewActivity.this, ProductDetailActivity.class);
-//                intent.putExtra("query", query);
-//                startActivity(intent);
-//                finish();
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                // Xử lý khi thay đổi nội dung search query
-//                return false;
-//            }
-//        });
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -143,10 +93,6 @@ public class CustomerViewActivity extends AppCompatActivity {
         if (id == R.id.icon_store) {
             startActivity(new Intent(CustomerViewActivity.this, StoreActivity.class));
         }
-
-//        if (id == R.id.icon_staff) {
-//            startActivity(new Intent(CustomerViewActivity.this, MainActivity.class));
-//        }
 
         if (id == R.id.logout) {
             startActivity(new Intent(CustomerViewActivity.this, MainActivity.class));
@@ -199,7 +145,7 @@ public class CustomerViewActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Customer>> call, Throwable t) {
-                Log.d("CUSTOMER", "CALL API CUSTOMER FAILED");
+                Log.d("CUSTOMER", "API CUSTOMER FAILED");
             }
         });
     }

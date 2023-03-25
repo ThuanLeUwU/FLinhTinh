@@ -31,7 +31,7 @@
         android:layout_height="223dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="Quý khách đã mua hàng thành công\n\nQuý khách vui lòng kiểm tra lại lịch sử giao dịch hoặc có thể quay lại trang home và tiếp tục đặt hàng\nCám ơn quý khách đã sử dụng dịch vụ của chúng tôi"
+        android:text="Quý khách đã mua hàng thành công\nCảm ơn Quý khách dã sử dụng dịch vụ chúng tôi và hẹn gặp lại quý khách"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"

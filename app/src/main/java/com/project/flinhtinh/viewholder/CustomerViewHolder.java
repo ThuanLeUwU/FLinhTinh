@@ -14,9 +14,9 @@ public class CustomerViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         customerName = itemView.findViewById(R.id.customer_name);
         customerEmail = itemView.findViewById(R.id.customer_email);
-        customerPhone = itemView.findViewById(R.id.customer_phone);
-        customerAddress = itemView.findViewById(R.id.customer_address);
-        customerCity = itemView.findViewById(R.id.customer_city);
+//        customerPhone = itemView.findViewById(R.id.customer_phone);
+//        customerAddress = itemView.findViewById(R.id.customer_address);
+//        customerCity = itemView.findViewById(R.id.customer_city);
         customerStatus = itemView.findViewById(R.id.customer_status);
     }
 }

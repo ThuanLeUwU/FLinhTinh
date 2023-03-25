@@ -51,21 +51,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btn_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#4dddff"
-                android:text="Xác nhận"></Button>
+                <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#4dddff"
+                    android:text="Xác nhận"></Button>
 
-            <ProgressBar
-                android:id="@+id/confirm_progress_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:indeterminate="true"
-                android:visibility="invisible" />
+                <ProgressBar
+                    android:id="@+id/confirm_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:indeterminate="true"
+                    android:visibility="invisible" />
             </FrameLayout>
         </LinearLayout>
 
-</LinearLayout></androidx.core.widget.NestedScrollView>
+    </LinearLayout></androidx.core.widget.NestedScrollView>

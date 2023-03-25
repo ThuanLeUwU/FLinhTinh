@@ -5,7 +5,8 @@
     android:id="@+id/drawer_layout_customer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CustomerViewActivity">
+    tools:context=".activity.CustomerViewActivity"
+    android:background="@drawable/loginbackground">
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -46,7 +47,8 @@
                     android:text="+"
                     android:textColor="@color/white"
                     android:textSize="30sp"
-                    android:layout_marginRight="5dp" />
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"/>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

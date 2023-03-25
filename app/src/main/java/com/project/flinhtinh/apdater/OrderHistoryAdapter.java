@@ -37,7 +37,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryViewHo
             return;
         }
         Picasso.get().load(orderDetail.getProduct().getImage()).into(holder.img_product);
-        holder.tv_order_id.setText(orderDetail.getOrder().getOrderId().toString());
+        holder.tv_order_id.setText("id " +orderDetail.getOrder().getOrderId().toString());
         holder.tv_order_status.setText("Trạng thái: " + orderDetail.getOrder().getStatus());
         holder.tv_product_name.setText(orderDetail.getProduct().getName());
         holder.tv_order_date.setText("Ngày đặt: " + orderDate);

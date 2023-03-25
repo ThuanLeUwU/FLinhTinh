@@ -42,13 +42,9 @@ public class StoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store);
 
-//        textCustomer = findViewById(R.id.text_customer);
-//        iconCustomer = findViewById(R.id.icon_person);
-//        textStaff = findViewById(R.id.text_staff);
-//        iconStaff = findViewById(R.id.icon_staff);
+
         rcvStore = findViewById(R.id.rcv_store);
-//        menu = findViewById(R.id.menu);
-//        searchView = findViewById(R.id.search_view);
+
 
         drawerLayout = findViewById(R.id.drawer_layout_store);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
@@ -60,24 +56,7 @@ public class StoreActivity extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_admin, menu);
-//        MenuItem searchItem = menu.findItem(R.id.icon_person);
-//        SearchView searchView = (SearchView) searchItem.getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                Intent intent = new Intent(CustomerViewActivity.this, ProductDetailActivity.class);
-//                intent.putExtra("query", query);
-//                startActivity(intent);
-//                finish();
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                // Xử lý khi thay đổi nội dung search query
-//                return false;
-//            }
-//        });
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -97,9 +76,6 @@ public class StoreActivity extends AppCompatActivity {
             startActivity(new Intent(StoreActivity.this, StoreActivity.class));
         }
 
-//        if (id == R.id.icon_staff) {
-//            startActivity(new Intent(StoreActivity.this, MainActivity.class));
-//        }
 
         if (id == R.id.logout) {
             startActivity(new Intent(StoreActivity.this, MainActivity.class));

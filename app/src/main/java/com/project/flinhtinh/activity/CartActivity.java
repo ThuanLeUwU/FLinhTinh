@@ -216,7 +216,7 @@ public class CartActivity extends AppCompatActivity implements OnButtonClickList
             }
             @Override
             public void onFailure(Call<Cart> call, Throwable t) {
-                Toast.makeText(CartActivity.this, "GET API FAILED", Toast.LENGTH_SHORT).show();
+//
             }
         });
     }
