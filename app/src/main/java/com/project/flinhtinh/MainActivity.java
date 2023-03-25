@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.project.flinhtinh.activity.CartActivity;
+import com.project.flinhtinh.activity.HistoryInputActivity;
 import com.project.flinhtinh.activity.LoginActivity;
 import com.project.flinhtinh.activity.OrderHistoryActivity;
 import com.project.flinhtinh.activity.ProductDetailActivity;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
         String userId = intent.getStringExtra("USER_ID");
         if(userId == null){
 //            this.userId = UUID.randomUUID().toString();
-            this.userId = "84f6a9ab-fac8-44df-9549-8c428b91a66a";
+            this.userId = "111";
         }
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
                 }
                 case R.id.order_history: {
                     drawerLayout.close();
-                    startActivity(new Intent(MainActivity.this, OrderHistoryActivity.class));
+                    startActivity(new Intent(MainActivity.this, HistoryInputActivity.class));
                     return true;
                 }
             }

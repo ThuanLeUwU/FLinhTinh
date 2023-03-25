@@ -19,15 +19,15 @@ public interface CartApi {
             .build()
             .create(CartApi.class);
 
-    @GET("api/v1/cart/{id}")
+    @GET("api/v1/cart1/{id}")
     Call<Cart> getCartWithId(@Path("id")String cartId);
 
-    @POST("api/v1/cart")
+    @POST("api/v1/cart1")
     Call<Cart> createCart(@Body Cart cart);
 
-    @PUT("api/v1/cart/{id}")
+    @PUT("api/v1/cart1/{id}")
     Call<Cart> updateCart(@Path("id")String id, @Body Cart cart);
 
-    @DELETE("api/v1/cart/{id}")
+    @DELETE("api/v1/cart1/{id}")
     Call<Cart> deleteCart(@Path("id")String id);
 }

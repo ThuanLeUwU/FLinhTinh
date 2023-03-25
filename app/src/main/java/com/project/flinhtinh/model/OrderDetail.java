@@ -3,14 +3,14 @@ package com.project.flinhtinh.model;
 import java.util.UUID;
 
 public class OrderDetail {
-    private UUID orderDetailId;
+    private String orderDetailId;
     private Order order;
     private Product product;
     private int quantity;
     private double price;
     private String status;
 
-    public OrderDetail(UUID orderDetailId, Order order, Product product, int quantity, double price, String status) {
+    public OrderDetail(String orderDetailId, Order order, Product product, int quantity, double price, String status) {
         this.orderDetailId = orderDetailId;
         this.order = order;
         this.product = product;
@@ -19,11 +19,11 @@ public class OrderDetail {
         this.status = status;
     }
 
-    public UUID getOrderDetailId() {
+    public String getOrderDetailId() {
         return orderDetailId;
     }
 
-    public void setOrderDetailId(UUID orderDetailId) {
+    public void setOrderDetailId(String orderDetailId) {
         this.orderDetailId = orderDetailId;
     }
 

@@ -47,8 +47,8 @@ public class OrderCheckoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
-        textHistory = findViewById(R.id.text_history);
-        imgCart = findViewById(R.id.shopping_cart);
+//        textHistory = findViewById(R.id.text_history);
+//        imgCart = findViewById(R.id.shopping_cart);
         recyclerView = findViewById(R.id.rcv_product);
         fullName = findViewById(R.id.tv_full_name);
         phone = findViewById(R.id.tv_phone);
@@ -58,13 +58,17 @@ public class OrderCheckoutActivity extends AppCompatActivity {
         totalPrice = findViewById(R.id.tv_total_price);
         btnBack = findViewById(R.id.btn_back);
         btnOrder = findViewById(R.id.btn_order);
-        menu = findViewById(R.id.menu);
-        searchView = findViewById(R.id.search_view);
+//        menu = findViewById(R.id.menu);
+//        searchView = findViewById(R.id.search_view);
 
-        textHistory.setOnClickListener(v -> {
-            Intent historyInput = new Intent(this, HistoryInputActivity.class);
-            startActivity(historyInput);
-        });
+//        textHistory.setOnClickListener(v -> {
+//            Intent historyInput = new Intent(this, HistoryInputActivity.class);
+//            startActivity(historyInput);
+//        });
+
+
+
+
 
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
         String userId = sharedPreferences.getString("USER_ID", null);
@@ -83,7 +87,7 @@ public class OrderCheckoutActivity extends AppCompatActivity {
                         form.getAddress(),
                         form.getCity(),
                         "Active");
-                Order order = new Order(UUID.randomUUID(),
+                Order order = new Order("12345",
                         orderCustomer,
                         null, null,
                         cart.totalPrice(),
@@ -98,7 +102,7 @@ public class OrderCheckoutActivity extends AppCompatActivity {
                 callApiCreateCustomer(orderCustomer);
                 callApiCreateOrder(order);
             } else {
-                Order order = new Order(UUID.randomUUID(),
+                Order order = new Order("12345",
                         customer,
                         null, null,
                         cart.totalPrice(),

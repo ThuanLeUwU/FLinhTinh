@@ -16,9 +16,9 @@ import androidx.appcompat.widget.SearchView;
 
 import com.project.flinhtinh.R;
 import com.project.flinhtinh.api.CustomerApi;
-import com.project.flinhtinh.api.OtpApi;
+//import com.project.flinhtinh.api.OtpApi;
 import com.project.flinhtinh.model.Customer;
-import com.project.flinhtinh.model.OTP;
+//import com.project.flinhtinh.model.OTP;
 
 import java.util.Date;
 import java.util.Properties;
@@ -56,21 +56,21 @@ public class HistoryInputActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.confirm_progress_bar);
 //        textHistory = findViewById(R.id.text_history);
 //        imgCart = findViewById(R.id.shopping_cart);
-        menu = findViewById(R.id.menu);
-        searchView = findViewById(R.id.search_view);
+//        menu = findViewById(R.id.menu);
+//        searchView = findViewById(R.id.search_view);
         inputEmail = findViewById(R.id.input_email);
         btnCancel = findViewById(R.id.btn_cancel);
         btnConfirm = findViewById(R.id.btn_confirm);
 
-        imgCart.setOnClickListener(v -> {
-            Intent cart = new Intent(this, CartActivity.class);
-            startActivity(cart);
-        });
+//        imgCart.setOnClickListener(v -> {
+//            Intent cart = new Intent(this, CartActivity.class);
+//            startActivity(cart);
+//        });
 
-        menu.setOnClickListener(v -> {
-            Intent login = new Intent(this, LoginActivity.class);
-            startActivity(login);
-        });
+//        menu.setOnClickListener(v -> {
+//            Intent login = new Intent(this, LoginActivity.class);
+//            startActivity(login);
+//        });
 
         btnConfirm.setOnClickListener(v -> {
             btnConfirm.setText("");
@@ -94,10 +94,10 @@ public class HistoryInputActivity extends AppCompatActivity {
             public void onResponse(Call<Customer[]> call, Response<Customer[]> response) {
                 Customer[] customer = response.body();
                 if (customer.length == 1) {
-                    callApiGetOtp(email);
-                    Intent otpActvity = new Intent(HistoryInputActivity.this, OtpActivity.class);
-                    otpActvity.putExtra("EMAIL", email);
-                    startActivity(otpActvity);
+//                    callApiGetOtp(email);
+                    Intent orderHistory = new Intent(HistoryInputActivity.this, OrderHistoryActivity.class);
+                    orderHistory.putExtra("EMAIL", email);
+                    startActivity(orderHistory);
                     btnConfirm.setText("Xác Nhận");
                     btnConfirm.setEnabled(true);
                     progressBar.setVisibility(View.INVISIBLE);
@@ -113,86 +113,86 @@ public class HistoryInputActivity extends AppCompatActivity {
         });
     }
 
-    private void createOtp(OTP otp) {
-        OtpApi.OTP_API.createOtp(otp).enqueue(new Callback<OTP>() {
-            @Override
-            public void onResponse(Call<OTP> call, Response<OTP> response) {
-                //do sth
-            }
-
-            @Override
-            public void onFailure(Call<OTP> call, Throwable t) {
-                //do sth
-            }
-        });
-    }
-
-    private void callApiGetOtp(String email){
-        OtpApi.OTP_API.getOtp(email).enqueue(new Callback<OTP[]>() {
-            @Override
-            public void onResponse(Call<OTP[]> call, Response<OTP[]> response) {
-                OTP[] getOtp = response.body();
-                String otp = randomOtpGenerator();
-                if(getOtp.length == 1){
-                    getOtp[0].setOtpCode(randomOtpGenerator());
-                    String newOtp = getOtp[0].getOtpCode();
-                    getOtp[0].setExpiredDate(new Date());
-                    callApiUpdateOtp(getOtp[0].getOtpId().toString(), getOtp[0]);
-                    sendEmail(email, newOtp);
-                } else {
-                    UUID uuid = UUID.randomUUID();
-                    createOtp(new OTP(uuid, otp, email, new Date(), "ALLOW"));
-                    sendEmail(email, otp);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<OTP[]> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private void sendEmail(String email, String otp){
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
-            }
-        });
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setSubject(subject);
-            message.setText("Đây là mã otp của bạn:\n\t\t\t" + otp);
-            Transport.send(message);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void callApiUpdateOtp(String id, OTP otp){
-        OtpApi.OTP_API.updateOtpWithEmail(id ,otp).enqueue(new Callback<OTP>() {
-            @Override
-            public void onResponse(Call<OTP> call, Response<OTP> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<OTP> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private String randomOtpGenerator() {
-        Random random = new Random();
-        return String.format("%06d", random.nextInt(999999 - 100000));
-    }
+//    private void createOtp(OTP otp) {
+//        OtpApi.OTP_API.createOtp(otp).enqueue(new Callback<OTP>() {
+//            @Override
+//            public void onResponse(Call<OTP> call, Response<OTP> response) {
+//                //do sth
+//            }
+//
+//            @Override
+//            public void onFailure(Call<OTP> call, Throwable t) {
+//                //do sth
+//            }
+//        });
+//    }
+//
+//    private void callApiGetOtp(String email){
+//        OtpApi.OTP_API.getOtp(email).enqueue(new Callback<OTP[]>() {
+//            @Override
+//            public void onResponse(Call<OTP[]> call, Response<OTP[]> response) {
+//                OTP[] getOtp = response.body();
+//                String otp = randomOtpGenerator();
+//                if(getOtp.length == 1){
+//                    getOtp[0].setOtpCode(randomOtpGenerator());
+//                    String newOtp = getOtp[0].getOtpCode();
+//                    getOtp[0].setExpiredDate(new Date());
+//                    callApiUpdateOtp(getOtp[0].getOtpId().toString(), getOtp[0]);
+//                    sendEmail(email, newOtp);
+//                } else {
+//                    UUID uuid = UUID.randomUUID();
+//                    createOtp(new OTP(uuid, otp, email, new Date(), "ALLOW"));
+//                    sendEmail(email, otp);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<OTP[]> call, Throwable t) {
+//
+//            }
+//        });
+//    }
+//
+//    private void sendEmail(String email, String otp){
+//        Properties props = new Properties();
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.smtp.host", "smtp.gmail.com");
+//        props.put("mail.smtp.port", "587");
+//        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+//            protected PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(from, password);
+//            }
+//        });
+//        try {
+//            Message message = new MimeMessage(session);
+//            message.setFrom(new InternetAddress(from));
+//            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+//            message.setSubject(subject);
+//            message.setText("Đây là mã otp của bạn:\n\t\t\t" + otp);
+//            Transport.send(message);
+//        } catch (MessagingException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//
+//    private void callApiUpdateOtp(String id, OTP otp){
+//        OtpApi.OTP_API.updateOtpWithEmail(id ,otp).enqueue(new Callback<OTP>() {
+//            @Override
+//            public void onResponse(Call<OTP> call, Response<OTP> response) {
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<OTP> call, Throwable t) {
+//
+//            }
+//        });
+//    }
+//
+//    private String randomOtpGenerator() {
+//        Random random = new Random();
+//        return String.format("%06d", random.nextInt(999999 - 100000));
+//    }
 }

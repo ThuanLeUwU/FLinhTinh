@@ -6,23 +6,23 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Cart implements Serializable {
-    private UUID cartId;
+    private String cartId;
     private HashMap<UUID, OrderDetail> cart;
 
 
     public Cart() {
     }
 
-    public Cart(UUID cartId, HashMap<UUID, OrderDetail> cart) {
+    public Cart(String cartId, HashMap<UUID, OrderDetail> cart) {
         this.cartId = cartId;
         this.cart = cart;
     }
 
-    public UUID getCartId() {
+    public String getCartId() {
         return cartId;
     }
 
-    public void setCartId(UUID cartId) {
+    public void setCartId(String cartId) {
         this.cartId = cartId;
     }
 

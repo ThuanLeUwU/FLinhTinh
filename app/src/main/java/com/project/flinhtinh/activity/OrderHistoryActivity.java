@@ -24,8 +24,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.project.flinhtinh.MainActivity;
 import com.project.flinhtinh.R;
 import com.project.flinhtinh.apdater.OrderHistoryAdapter;
+import com.project.flinhtinh.apdater.StoreAdapter;
 import com.project.flinhtinh.api.OrderApi;
+import com.project.flinhtinh.api.StoreApi;
 import com.project.flinhtinh.model.OrderDetail;
+import com.project.flinhtinh.model.Store;
 
 import java.util.List;
 
@@ -166,8 +169,9 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
     private void callApiOrderHistory() {
         Intent intent = getIntent();
-        String email = intent.getStringExtra("EMAIL");
-        OrderApi.ORDER_API.getOrderHistory("ee8ee11d-4db7-46f8-bd44-a50c5932a2b6").enqueue(new Callback<List<OrderDetail>>() {
+        String id = intent.getStringExtra("id");
+
+        OrderApi.ORDER_API.getOrderHistory().enqueue(new Callback<List<OrderDetail>>() {
             @Override
             public void onResponse(Call<List<OrderDetail>> call, Response<List<OrderDetail>> response) {
                 List<OrderDetail> listOrderHistory = response.body();
@@ -186,4 +190,6 @@ public class OrderHistoryActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

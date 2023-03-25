@@ -8,126 +8,126 @@
     android:background="@drawable/header_background"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="0dp"
-        android:src="@drawable/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/icon"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:src="@drawable/logo"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <ImageView
-        android:id="@+id/icon_location"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="0dp"
-        android:src="@drawable/ic_location"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/icon_location"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="90dp"-->
+<!--        android:layout_marginTop="0dp"-->
+<!--        android:src="@drawable/ic_location"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/text_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-5dp"
-        android:text="Hồ Chí Minh"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/icon_location"
-        app:layout_constraintStart_toStartOf="@id/icon_location"
-        app:layout_constraintTop_toBottomOf="@id/icon_location" />
+<!--    <TextView-->
+<!--        android:id="@+id/text_location"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="-5dp"-->
+<!--        android:text="Hồ Chí Minh"-->
+<!--        android:textSize="17sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/icon_location"-->
+<!--        app:layout_constraintStart_toStartOf="@id/icon_location"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/icon_location" />-->
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="1dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/icon_location"
-        app:layout_constraintStart_toEndOf="@id/text_location"
-        app:layout_constraintTop_toTopOf="@id/icon_location" />
+<!--    <View-->
+<!--        android:id="@+id/divider"-->
+<!--        android:layout_width="1dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/icon_location"-->
+<!--        app:layout_constraintStart_toEndOf="@id/text_location"-->
+<!--        app:layout_constraintTop_toTopOf="@id/icon_location" />-->
 
-    <TextView
-        android:id="@+id/text_history"
-        android:layout_width="57dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:text="Lịch sử"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/divider"
-        app:layout_constraintTop_toTopOf="@id/icon_location" />
+<!--    <TextView-->
+<!--        android:id="@+id/text_history"-->
+<!--        android:layout_width="57dp"-->
+<!--        android:layout_height="29dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:clickable="true"-->
+<!--        android:text="Lịch sử"-->
+<!--        android:textSize="17sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@id/divider"-->
+<!--        app:layout_constraintTop_toTopOf="@id/icon_location" />-->
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="1dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@id/icon_location"
-        app:layout_constraintStart_toEndOf="@+id/text_history"
-        app:layout_constraintTop_toTopOf="@id/icon_location" />
+<!--    <View-->
+<!--        android:id="@+id/divider2"-->
+<!--        android:layout_width="1dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/icon_location"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/text_history"-->
+<!--        app:layout_constraintTop_toTopOf="@id/icon_location" />-->
 
-    <ImageView
-        android:id="@+id/shopping_cart"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:clickable="true"
-        android:src="@drawable/shopping_cart"
-        app:layout_constraintStart_toStartOf="@+id/text_history"
-        app:layout_constraintTop_toTopOf="@+id/text_history" />
+<!--    <ImageView-->
+<!--        android:id="@+id/shopping_cart"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="80dp"-->
+<!--        android:layout_marginLeft="80dp"-->
+<!--        android:clickable="true"-->
+<!--        android:src="@drawable/shopping_cart"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/text_history"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/text_history" />-->
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="1dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/shopping_cart"
-        app:layout_constraintStart_toEndOf="@+id/shopping_cart"
-        app:layout_constraintTop_toTopOf="@id/icon_location" />
+<!--    <View-->
+<!--        android:id="@+id/divider3"-->
+<!--        android:layout_width="1dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/shopping_cart"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/shopping_cart"-->
+<!--        app:layout_constraintTop_toTopOf="@id/icon_location" />-->
 
-    <ImageView
-        android:id="@+id/menu"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:clickable="true"
-        android:src="@drawable/ic_baseline_menu_24"
-        app:layout_constraintStart_toStartOf="@+id/divider3"
-        app:layout_constraintTop_toTopOf="@+id/text_history" />
+<!--    <ImageView-->
+<!--        android:id="@+id/menu"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:clickable="true"-->
+<!--        android:src="@drawable/ic_baseline_menu_24"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/divider3"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/text_history" />-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/menu">-->
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:queryHint="Search Products"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@android:color/transparent"
-            app:searchIcon="@drawable/ic_search"
-            android:background="@color/white"/>
-    </LinearLayout>
+<!--        <androidx.appcompat.widget.SearchView-->
+<!--            android:id="@+id/search_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:queryHint="Search Products"-->
+<!--            app:iconifiedByDefault="false"-->
+<!--            app:queryBackground="@android:color/transparent"-->
+<!--            app:searchIcon="@drawable/ic_search"-->
+<!--            android:background="@color/white"/>-->
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

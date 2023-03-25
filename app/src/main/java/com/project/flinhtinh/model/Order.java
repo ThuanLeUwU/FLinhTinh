@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Order implements Serializable {
-    private UUID orderId;
+    private String orderId;
     private Customer customer;
     private Store store;
     private Staff staff;
@@ -15,7 +15,7 @@ public class Order implements Serializable {
     private String address;
     private String status;
 
-    public Order(UUID orderId, Customer customer, Store store, Staff staff, double totalPrice, Date orderDate, String city, String address, String status) {
+    public Order(String orderId, Customer customer, Store store, Staff staff, double totalPrice, Date orderDate, String city, String address, String status) {
         this.orderId = orderId;
         this.customer = customer;
         this.store = store;
@@ -48,11 +48,11 @@ public class Order implements Serializable {
         this.address = address;
     }
 
-    public UUID getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(UUID orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 

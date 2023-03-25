@@ -21,14 +21,13 @@ public interface CustomerApi {
             .create(CustomerApi.class);
 
 
-    @GET("api/v1/customers")
+    @GET("api/v1/customers1")
     Call<List<Customer>> getListCustomer();
 
-    @GET("api/v1/customers")
+    @GET("api/v1/customers1")
     Call<Customer[]> findCustomerByEmail(@Query("email") String email);
 
-    @POST("api/v1/customers")
+    @POST("api/v1/customers1")
     Call<Customer> createCustomer(@Body Customer customer);
-
 
 }

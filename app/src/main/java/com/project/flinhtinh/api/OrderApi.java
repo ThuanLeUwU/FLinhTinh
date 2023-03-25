@@ -20,15 +20,15 @@ public interface OrderApi {
             .build()
             .create(OrderApi.class);
 
-    @GET("api/v1/orders")
+    @GET("api/v1/orders1")
     Call<List<OrderDetail>> getListOrderHistory();
 
-    @POST("api/v1/orders")
+    @POST("api/v1/orders1")
     Call<Order> createOrder(@Body Order order);
 
-    @POST("api/v1/order-detail")
+    @POST("api/v1/order-detail1")
     Call<OrderDetail> createOrderDetail(@Body OrderDetail orderDetail);
 
-    @GET("api/v1/orders/{id}/order-detail")
-    Call<List<OrderDetail>> getOrderHistory(@Path("id") String email);
+    @GET("api/v1/order-detail1")
+    Call<List<OrderDetail>>getOrderHistory();
 }

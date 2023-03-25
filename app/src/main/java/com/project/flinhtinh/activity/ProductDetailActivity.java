@@ -58,7 +58,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             double price = Double.parseDouble((String) productPrice.getText());
 
             if (!cart.getCart().containsKey(product.getProductId())) {
-                cart.addItem(product.getProductId(), new OrderDetail(UUID.randomUUID(), null, product, quantity, price, "ACTIVE"));
+                cart.addItem(product.getProductId(), new OrderDetail("string", null, product, quantity, price, "ACTIVE"));
                 Log.d("TEST", "Don't have the item");
             } else {
                 cart.editItem(product.getProductId(), quantity);
@@ -125,7 +125,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     Log.d("TEST", "CART NOT NULL");
                 } else {
                     Log.d("TEST", "CART NULL");
-                    cart = new Cart(UUID.fromString(cartId), new HashMap<>());
+                    cart = new Cart(cartId, new HashMap<>());
                     callApiCreateCart(cart);
                 }
             }
