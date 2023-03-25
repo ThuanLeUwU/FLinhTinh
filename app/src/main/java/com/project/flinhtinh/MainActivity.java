@@ -29,12 +29,16 @@ import com.project.flinhtinh.activity.OrderHistoryActivity;
 import com.project.flinhtinh.activity.ProductDetailActivity;
 import com.project.flinhtinh.apdater.CategoryAdapter;
 import com.project.flinhtinh.apdater.MainAdapter;
+import com.project.flinhtinh.apdater.SliderAdapter;
 import com.project.flinhtinh.api.CategoryApi;
 import com.project.flinhtinh.api.ProductApi;
 import com.project.flinhtinh.model.Category;
 import com.project.flinhtinh.model.Product;
 import com.project.flinhtinh.listener.OnCategoryListener;
 import com.project.flinhtinh.listener.OnProductListener;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.List;
 import java.util.UUID;
@@ -58,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
     private ActionBarDrawerToggle toggle;
     private NavigationView navigationView;
 
+    SliderView sliderView;
+    int[] images = {R.drawable.one,
+            R.drawable.two,
+            R.drawable.three};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +82,15 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("USER_ID", this.userId);
         editor.apply();
+
+        sliderView = findViewById(R.id.image_slider);
+
+        SliderAdapter sliderAdapter = new SliderAdapter(images);
+
+        sliderView.setSliderAdapter(sliderAdapter);
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        sliderView.startAutoCycle();
 
 //        textHistory = findViewById(R.id.text_history);
 //        imgCart = findViewById(R.id.shopping_cart);
@@ -136,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements OnProductListener
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_nav, menu);
-        MenuItem searchItem = menu.findItem(R.id.search);
+        MenuItem searchItem = menu.findItem(R.id.search_view);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

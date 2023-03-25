@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/icon_person"
+        android:title="Customer"
+        android:icon="@drawable/ic_person"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:theme="@style/SearchViewStyle"
+        />
+    <item
+        android:title="Cửa hàng"
+        android:icon="@drawable/ic_store"
+        app:showAsAction="always"
+        android:id="@+id/icon_store"
+        />
+
+    <item
+        android:title="Cửa hàng"
+        android:icon="@drawable/ic_location"
+        app:showAsAction="always"
+        android:id="@+id/icon_staff"/>
+
+    <item
+        android:title="Thoát"
+        android:icon="@drawable/nav_exit"
+        app:showAsAction="always"
+        android:id="@+id/logout"/>
+</menu>

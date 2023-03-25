@@ -2,15 +2,20 @@ package com.project.flinhtinh.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.project.flinhtinh.MainActivity;
 import com.project.flinhtinh.R;
 import com.project.flinhtinh.apdater.StoreAdapter;
 import com.project.flinhtinh.api.StoreApi;
@@ -28,34 +33,78 @@ public class StoreActivity extends AppCompatActivity {
     private SearchView searchView;
     private RecyclerView rcvStore;
     private StoreAdapter storeAdapter;
+
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store);
 
-        textCustomer = findViewById(R.id.text_customer);
-        iconCustomer = findViewById(R.id.icon_person);
-        textStaff = findViewById(R.id.text_staff);
-        iconStaff = findViewById(R.id.icon_staff);
+//        textCustomer = findViewById(R.id.text_customer);
+//        iconCustomer = findViewById(R.id.icon_person);
+//        textStaff = findViewById(R.id.text_staff);
+//        iconStaff = findViewById(R.id.icon_staff);
         rcvStore = findViewById(R.id.rcv_store);
-        menu = findViewById(R.id.menu);
-        searchView = findViewById(R.id.search_view);
+//        menu = findViewById(R.id.menu);
+//        searchView = findViewById(R.id.search_view);
 
-        View.OnClickListener onClickCustomer = v -> {
-            Intent customerView = new Intent(this, CustomerViewActivity.class);
-            startActivity(customerView);
-            finish();
-        };
-        View.OnClickListener onClickStaff = v -> {
-            Intent storeView = new Intent(this, StoreActivity.class);
-            startActivity(storeView);
-            finish();
-        };
-
-        textCustomer.setOnClickListener(onClickCustomer);
-        iconCustomer.setOnClickListener(onClickCustomer);
+        drawerLayout = findViewById(R.id.drawer_layout_store);
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         callApiGetListStore();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_admin, menu);
+//        MenuItem searchItem = menu.findItem(R.id.icon_person);
+//        SearchView searchView = (SearchView) searchItem.getActionView();
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                Intent intent = new Intent(CustomerViewActivity.this, ProductDetailActivity.class);
+//                intent.putExtra("query", query);
+//                startActivity(intent);
+//                finish();
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                // Xử lý khi thay đổi nội dung search query
+//                return false;
+//            }
+//        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
+        if (id == R.id.icon_person) {
+            startActivity(new Intent(StoreActivity.this, CustomerViewActivity.class));
+        }
+
+        if (id == R.id.icon_store) {
+            startActivity(new Intent(StoreActivity.this, StoreActivity.class));
+        }
+
+//        if (id == R.id.icon_staff) {
+//            startActivity(new Intent(StoreActivity.this, MainActivity.class));
+//        }
+
+        if (id == R.id.logout) {
+            startActivity(new Intent(StoreActivity.this, MainActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void callApiGetListStore(){

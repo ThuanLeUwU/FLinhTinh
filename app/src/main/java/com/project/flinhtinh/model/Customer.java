@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 public class Customer implements Serializable {
-    private UUID customerId;
+    private String customerId;
     private String fullName;
     private String phone;
     private String email;
@@ -13,7 +13,7 @@ public class Customer implements Serializable {
     private String address;
     private String status;
 
-    public Customer(UUID customerId, String fullName, String phone, String email, String street, String city, String address, String status) {
+    public Customer(String customerId, String fullName, String phone, String email, String street, String city, String address, String status) {
         this.customerId = customerId;
         this.fullName = fullName;
         this.phone = phone;
@@ -28,11 +28,11 @@ public class Customer implements Serializable {
 
     }
 
-    public UUID getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(UUID customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 

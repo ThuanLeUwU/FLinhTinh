@@ -17,7 +17,7 @@ public class CustomerOrderFormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer_order_form);
+        setContentView(R.layout.customer_form);
 
         fullName = findViewById(R.id.et_fullname);
         phone = findViewById(R.id.et_phone);

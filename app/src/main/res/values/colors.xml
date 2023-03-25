@@ -11,5 +11,6 @@
     <color name="primary_outside_app">#FF8000</color>
     <color name="red_orange">#FF4500</color>
     <color name="red">#FF0000</color>
-
+    <color name="green">#03DAC5</color>
+    <color name="orange">#FF9933</color>
 </resources>

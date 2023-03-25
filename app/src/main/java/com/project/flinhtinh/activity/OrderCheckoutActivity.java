@@ -47,8 +47,8 @@ public class OrderCheckoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
-//        textHistory = findViewById(R.id.text_history);
-//        imgCart = findViewById(R.id.shopping_cart);
+        textHistory = findViewById(R.id.text_history);
+        imgCart = findViewById(R.id.shopping_cart);
         recyclerView = findViewById(R.id.rcv_product);
         fullName = findViewById(R.id.tv_full_name);
         phone = findViewById(R.id.tv_phone);
@@ -75,11 +75,13 @@ public class OrderCheckoutActivity extends AppCompatActivity {
         btnOrder.setOnClickListener(v -> {
             Intent orderSuccess = new Intent(OrderCheckoutActivity.this, OrderSuccessActivity.class);
             if(customer == null){
-                Customer orderCustomer = new Customer(UUID.fromString(userId),
+                Customer orderCustomer = new Customer(userId,
                         form.getFullName(),
                         form.getPhone(),
                         form.getEmail(),
-                        "street","city","address",
+                        "stress",
+                        form.getAddress(),
+                        form.getCity(),
                         "Active");
                 Order order = new Order(UUID.randomUUID(),
                         orderCustomer,
